@@ -1,0 +1,174 @@
+""<!DOCTYPE html>
+
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LogicBank | Make Money</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #000000, #0f0f5e);
+      color: white;
+    }header {
+  text-align: center;
+  padding: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: gold;
+}
+
+.investment-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.option {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.option:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.option i {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: gold;
+}
+
+.option p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.investment-form {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin: 20px;
+}
+
+.investment-form h2 {
+  color: gold;
+}
+
+.investment-form label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.investment-form input,
+.investment-form select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 15px;
+}
+
+.submit-btn {
+  background-color: gold;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.receipt {
+  margin: 20px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+  </style>
+</head><body>
+  <header>Make Money</header>  <div class="investment-options">
+    <div class="option">
+      <i class="fab fa-bitcoin"></i>
+      <p>Bitcoin & Crypto</p>
+    </div>
+    <div class="option">
+      <i class="fas fa-city"></i>
+      <p>Estate Investment</p>
+    </div>
+    <div class="option">
+      <i class="fas fa-chart-line"></i>
+      <p>Shares</p>
+    </div>
+    <div class="option">
+      <i class="fas fa-briefcase"></i>
+      <p>Ownership</p>
+    </div>
+  </div>  <div class="investment-form">
+    <h2>Investment Form</h2>
+    <form>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your name"><label for="idnumber">ID Number</label>
+  <input type="text" id="idnumber" placeholder="Enter your ID number">
+
+  <label for="amount">Amount to Invest</label>
+  <input type="number" id="amount" placeholder="e.g. 5000">
+
+  <label for="category">Investment Category</label>
+  <select id="category">
+    <option>Bitcoin & Crypto</option>
+    <option>Estate Investment</option>
+    <option>Shares</option>
+    <option>Ownership</option>
+  </select>
+
+  <label for="duration">Investment Duration (in months)</label>
+  <input type="number" id="duration" placeholder="e.g. 12">
+
+  <button class="submit-btn" type="button" onclick="generateReceipt()">Submit Investment</button>
+</form>
+
+  </div>  <div class="receipt" id="receipt" style="display: none;">
+    <h3>Receipt</h3>
+    <p><strong>Name:</strong> <span id="r_name"></span></p>
+    <p><strong>ID:</strong> <span id="r_id"></span></p>
+    <p><strong>Category:</strong> <span id="r_cat"></span></p>
+    <p><strong>Amount Invested:</strong> R<span id="r_amt"></span></p>
+    <p><strong>Duration:</strong> <span id="r_dur"></span> months</p>
+    <p><strong>Estimated Return:</strong> R<span id="r_return"></span></p>
+    <p><strong>Return Date:</strong> <span id="r_date"></span></p>
+  </div>  <script>
+    function generateReceipt() {
+      const name = document.getElementById("name").value;
+      const id = document.getElementById("idnumber").value;
+      const amt = parseFloat(document.getElementById("amount").value);
+      const cat = document.getElementById("category").value;
+      const dur = parseInt(document.getElementById("duration").value);
+
+      const interestRate = 0.08; // 8% example
+      const returnAmount = (amt + (amt * interestRate * dur / 12)).toFixed(2);
+
+      const currentDate = new Date();
+      currentDate.setMonth(currentDate.getMonth() + dur);
+      const returnDate = currentDate.toDateString();
+
+      document.getElementById("r_name").innerText = name;
+      document.getElementById("r_id").innerText = id;
+      document.getElementById("r_cat").innerText = cat;
+      document.getElementById("r_amt").innerText = amt.toFixed(2);
+      document.getElementById("r_dur").innerText = dur;
+      document.getElementById("r_return").innerText = returnAmount;
+      document.getElementById("r_date").innerText = returnDate;
+
+      document.getElementById("receipt").style.display = "block";
+    }
+  </script></body></html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LogicBank | Track Money</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #003366;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    header i {
+      cursor: pointer;
+    }
+    .container {
+      padding: 1.5rem;
+    }
+    h2 {
+      color: #003366;
+    }
+    .info {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 1rem;
+    }
+    .progress {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #e0e0e0;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .progress div {
+      text-align: center;
+    }
+    .progress i {
+      font-size: 1.5rem;
+      margin-bottom: 0.3rem;
+    }
+    .active {
+      color: green;
+      animation: bounce 1s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    .timer {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #444;
+    }
+    .btn {
+      background: #003366;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #003366;
+      display: flex;
+      justify-content: space-around;
+      padding: 0.8rem 0;
+      color: white;
+    }
+    .footer i {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body><header>
+  <i class="fas fa-arrow-left" onclick="goBack()"></i>
+  <h2>Track Your Money</h2>
+</header><div class="container">
+  <div class="info">
+    <p><strong>Beneficiary:</strong> Palesa Dube</p>
+    <p><strong>Account No:</strong> 6783 4556 998</p>
+    <p><strong>Transaction ID:</strong> TX90455411</p>
+    <p><strong>Amount:</strong> R500.00</p>
+    <p><strong>Sent:</strong> 12:34 PM</p>
+  </div>  <div class="progress">
+    <div><i class="fas fa-check-circle active"></i><br>Sent</div>
+    <div><i class="fas fa-spinner active"></i><br>Processing</div>
+    <div><i class="fas fa-check-double"></i><br>Received</div>
+  </div>  <div class="timer" id="timer">Estimated time left: 4:59</div>  <button class="btn" onclick="generateReceipt()">
+    <i class="fas fa-receipt"></i> View Receipt
+  </button>  <div class="info" id="receipt" style="display:none; margin-top: 1rem">
+    <h3>Receipt</h3>
+    <p><strong>Transferred:</strong> R500.00</p>
+    <p><strong>To:</strong> Palesa Dube - 6783 4556 998</p>
+    <p><strong>Time:</strong> 12:34 PM</p>
+    <p><strong>Remaining Balance:</strong> R1,500.00</p>
+  </div>
+</div><div class="footer">
+  <i class="fas fa-money-check-alt"></i>
+  <i class="fas fa-route"></i>
+  <i class="fas fa-qrcode"></i>
+  <i class="fas fa-credit-card"></i>
+</div><script>
+function goBack() {
+  window.location.href = 'dashboard.html';
+}
+
+let secondsLeft = 299;
+const timerEl = document.getElementById("timer");
+const interval = setInterval(() => {
+  if (secondsLeft <= 0) {
+    clearInterval(interval);
+    timerEl.textContent = "Transfer complete ✅";
+    document.querySelectorAll('.progress i')[2].classList.add('active');
+  } else {
+    const mins = Math.floor(secondsLeft / 60);
+    const secs = secondsLeft % 60;
+    timerEl.textContent = `Estimated time left: ${mins}:${secs.toString().padStart(2, '0')}`;
+    secondsLeft--;
+  }
+}, 1000);
+
+function generateReceipt() {
+  document.getElementById("receipt").style.display = "block";
+}
+</script></body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virtual Card</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0f24;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+    }
+
+    .card-container {
+      width: 300px;
+      height: 400px;
+      perspective: 1000px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-side {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .card-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+    }
+
+    .actions {
+      width: 320px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .action-btn {
+      background: #ffc107;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 10px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .action-btn:hover {
+      background: #ffdb4d;
+    }
+
+    .switch {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #1e1e2f;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .switch input[type="checkbox"] {
+      width: 40px;
+      height: 20px;
+      -webkit-appearance: none;
+      background: #ccc;
+      outline: none;
+      border-radius: 20px;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .switch input[type="checkbox"]:checked {
+      background: #00e676;
+    }
+
+    .switch input[type="checkbox"]::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      transition: 0.3s;
+    }
+
+    .switch input[type="checkbox"]:checked::before {
+      transform: translateX(20px);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Virtual Card</h2>
+
+  <div class="card-container" onclick="flipCard()">
+    <div class="card" id="virtualCard">
+      <div class="card-side card-front">
+        <img src="Front.png" alt="Card Front" />
+      </div>
+      <div class="card-side card-back">
+        <img src="Back.png" alt="Card Back" />
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <div class="switch">
+      <label for="onlineToggle">Online Purchase</label>
+      <input type="checkbox" id="onlineToggle" />
+    </div>
+
+    <button class="action-btn" onclick="alert('Card has been stopped')">Stop Card</button>
+    <button class="action-btn" onclick="alert('PIN change requested')">Change PIN</button>
+  </div>
+
+  <script>
+    function flipCard() {
+      const card = document.getElementById('virtualCard');
+      card.classList.toggle('flipped');
+    }
+  </script>
+
+</body>
+</html>

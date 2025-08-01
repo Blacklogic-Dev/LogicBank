@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LogicBank Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
+      padding: 20px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .logo {
+      height: 150px;
+    }
+    .welcome {
+      font-size: 1.5rem;
+      margin-left: 20px;
+      color: #00ffff;
+    }
+    .avatar {
+      display: block;
+      margin: 20px auto;
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+      background-image: url('Logic_resized (1).jpg');
+      background-size: cover;
+      border: 2px solid #00ffff;
+    }
+    .balance-box {
+      background-color: #111;
+      border: 2px solid gold;
+      padding: 20px;
+      margin: 20px 0;
+      font-family: monospace;
+    }
+    .balance-box h4 {
+      margin-bottom: 10px;
+      color: gold;
+    }
+    .currency-scroll {
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      border-top: 2px solid #00ffff;
+      border-bottom: 2px solid #00ffff;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+    .currency-scroll p {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 10s linear infinite;
+      color: #00ffff;
+      font-size: 1rem;
+    }
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .action-button {
+      background: gold;
+      color: #000;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .action-button i {
+      margin-bottom: 5px;
+      display: block;
+      font-size: 1.2rem;
+    }
+    .action-button:hover {
+      background: #00ffff;
+      color: #000;
+    }
+    .print-msg {
+      font-style: italic;
+      color: #999;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #111;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+      border-top: 2px solid gold;
+    }
+    nav a {
+      color: #00ffff;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Bank.png" alt="LogicBank Logo" class="logo">
+    <div class="welcome">Hi Mthokozisi!</div>
+  </header>  
+  <div class="avatar">
+  
+</div>
+    <h4>Balance:</h4>
+    <pre>Rands: R450,000
+Dollars: $24705,20
+Euros: €21628,04</pre>
+  </div>  <div class="currency-scroll">
+    <p>$1 = R18.50 | £1 = R22.30 | $1 = €0.85 | £ = €1.10</p>
+  </div>  <div class="actions">
+<a href="pay.html" class="action-button">
+  <i class="fas fa-user-check"></i> Pay Beneficiary
+</a>
+<a href="track.html" class="action-button">
+  <i class="fas fa-route"></i> Track Money
+</a>
+<a href="shop.html" class="action-button">
+  <i class="fas fa-shopping-cart"></i> Shop Online
+</a>
+<a href="money.html" class="action-button">
+  <i class="fas fa-money-bill-wave"></i> Make Money
+</a></div>  <div class="print-msg">"Grow smart with LogicBank."</div>  <nav>
+    <a href="option.html"><i class="fas fa-money-check-alt"></i></a>
+    <a href="code.html"><i class="fas fa-qrcode"></i></a>
+    <a href="virtual.html"><i class="fas fa-credit-card"></i></a>
+  </nav>
+</body>
+</html>

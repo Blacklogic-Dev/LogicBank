@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LogicBank Landing Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: gold;
+      text-align: center;
+    }header img {
+  width: 250px;
+  margin-top: 20px;
+}
+
+.hero-image {
+  width: 350px;
+  margin: 20px auto;
+}
+
+h1 {
+  font-size: 2rem;
+  color: gold;
+  text-shadow: 0 0 10px #00f0ff;
+  margin-bottom: 40px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  padding: 0 20px;
+  margin-bottom: 60px;
+}
+
+.button {
+  background: #000;
+  border: 2px solid;
+  border-radius: 12px;
+  padding: 15px 10px;
+  color: gold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.button.electric {
+  border-color: #00f0ff;
+  color: #00f0ff;
+}
+
+.button.gold {
+  border-color: gold;
+  color: gold;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: #000;
+}
+
+.sign-in-btn {
+  width: 100%;
+  background: #00f0ff;
+  color: #000;
+  padding: 15px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Floating Chatbot */
+#chatbot {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #00f0ff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #00f0ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 999;
+}
+
+#chatbot i {
+  font-size: 24px;
+  color: #000;
+}
+
+#chat-window {
+  display: none;
+  position: fixed;
+  bottom: 160px;
+  right: 20px;
+  width: 300px;
+  height: 350px;
+  background: #111;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #00f0ff;
+  padding: 15px;
+  z-index: 999;
+}
+
+#chat-window textarea {
+  width: 100%;
+  height: 80px;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+#chat-window button {
+  width: 100%;
+  margin-top: 10px;
+  background: #00f0ff;
+  color: #000;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>  <header>
+    <img src="Bank.png" alt="LogicBank Logo" />
+  </header>  <main>
+    <img class="hero-image" src="king.webp" alt="Hero Image" />
+    <h1>Welcome to LogicBank — Save Smart. Grow Smart.</h1><div class="buttons">
+  <div class="button electric"><i class="fas fa-university"></i> Bank Transfer</div>
+  <div class="button gold"><i class="fas fa-shopping-cart"></i> Purchase</div>
+  <div class="button electric"><i class="fas fa-user-friends"></i> Pay Beneficiary</div>
+  <div class="button gold"><i class="fas fa-store"></i> Shop Online</div>
+  <div class="button electric"><i class="fas fa-map-marker-alt"></i> Track Money</div>
+  <div class="button gold"><i class="fas fa-coins"></i> Make Money</div>
+</div>
+
+  </main>  <div class="footer">
+<a href="signin.html">
+  <button class="sign-in-btn">Sign In</button>
+</a>
+  </div>  <!-- Floating Chatbot Icon -->  <div id="chatbot" onclick="toggleChat()">
+    <i class="fas fa-robot"></i>
+  </div>  <!-- Chat Window -->  <div id="chat-window">
+    <p><strong>LogicBot:</strong> How can I help you today?</p>
+    <textarea placeholder="Type your message..."></textarea>
+    <button onclick="alert('Message sent!')">Send</button>
+  </div>  <script>
+    function toggleChat() {
+      const chat = document.getElementById('chat-window');
+      chat.style.display = chat.style.display === 'block' ? 'none' : 'block';
+    }
+  </script></body>
+</html>
